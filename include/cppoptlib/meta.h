@@ -2,6 +2,7 @@
 #ifndef META_H
 #define META_H
 
+#include <iostream>
 #include <Eigen/Dense>
 
 namespace cppoptlib {
@@ -11,21 +12,6 @@ using Vector = Eigen::Matrix<T, Eigen::Dynamic, 1>;
 
 template <typename T>
 using Matrix = Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic>;
-
-typedef struct Options {
-    double gradTol;
-    double rate;
-    size_t maxIter;
-    size_t m;
-
-    Options() {
-        rate = 0.00005;
-        maxIter = 100000;
-        gradTol = 1e-4;
-        m = 10;
-
-    }
-} Options;
 
 template<typename T>
 bool checkConvergence(T val_new, T val_old, Vector<T> grad, Vector<T> x_new, Vector<T> x_old) {

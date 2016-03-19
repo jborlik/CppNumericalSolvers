@@ -1,16 +1,16 @@
 #ifndef PROBLEM_H
 #define PROBLEM_H
 
+#include <vector>
+
 #include <Eigen/Dense>
-#ifndef MATLAB
-#ifdef NDEBUG
+
+#if defined(MATLAB) || defined(NDEBUG)
+#define EXPECT_NEAR(x, y, z)
+#else
+#define GTEST_HAS_TR1_TUPLE 0
 #include "../gtest/gtest.h"
-#else
-#define EXPECT_NEAR(x, y, z)
-#endif /* NDEBUG */
-#else
-#define EXPECT_NEAR(x, y, z)
-#endif /* MATLAB */
+#endif /* RELEASE MODE */
 
 #include "meta.h"
 
